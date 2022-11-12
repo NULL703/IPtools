@@ -9,7 +9,7 @@ Created on: 2022.11.11    17:46
 #include <network.h>
 
 const char options[0xa][0x20] = {
-    "", "--subnetmask-sn", "--subnetmask-bit", "--bintodec", "--dectobin", "--binand", "--binor", "--binNot"
+    "", "--subnetmask-sn", "--subnetmask-bit", "--bintodec", "--dectobin", "--binand", "--binor", "--binNot", "--help"
 };
 
 SHK_BOOL argsCountCheck(int argc, int stdArgc)
@@ -154,6 +154,18 @@ int main(int argc, char** argv)
             if(argsCountCheck(argc, 3) == SHK_FALSE) return 2;
             return notCalc(argv[2]);
         }
+        case 8: printf(
+            "Usage: iptools [选项] [参数...]\n"
+            "可用选项:\n"
+            "--subnetmask-sn: 根据子网数计算子网掩码。\n"
+            "--subnetmask-bit: 根据网络前缀计算子网掩码。\n"
+            "--bintodec: 二进制转十进制。\n"
+            "--dectobin: 十进制转二进制。\n"
+            "--binand: 二进制的与运算。\n"
+            "--binor: 二进制的或运算。\n"
+            "--binNot: 二进制非运算。\n"
+            "--help: 显示帮助。\n"
+        );
         default: printf("Error: 命令选项不存在！\n");
     }
     return 0;
